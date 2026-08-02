@@ -33,6 +33,8 @@ export function CtaFooter() {
         <div className="flex gap-6">
           <a href={portfolioData.header.socials.github} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">GitHub</a>
           <a href={portfolioData.header.socials.linkedin} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">LinkedIn</a>
+          <a href={portfolioData.header.socials.facebook} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Facebook</a>
+          <a href={portfolioData.header.socials.instagram} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Instagram</a>
         </div>
       </footer>
     </section>

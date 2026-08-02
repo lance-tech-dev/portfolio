@@ -70,7 +70,7 @@ export const portfolioData = {
     bio: "Full-Stack Web Developer, Technical Support Specialist, and Cybersecurity Enthusiast with experience in API investigation, log analysis, penetration testing, system troubleshooting, and web application development. Skilled in React.js, modern web technologies, operating systems, hardware support, and security-focused problem-solving, with a strong commitment to delivering efficient, secure, and reliable solutions.",
     socials: {
       email: "mailto:lanceachacoso01@gmail.com",
-      github: "https://github.com/TQ-DevLance",
+      github: "https://github.com/lance-tech-dev",
       linkedin: "https://linkedin.com/in/lance-achacoso-035367415",
       facebook: "https://www.facebook.com/lncchcs/",
       instagram: "https://www.instagram.com/lncchcs/",
