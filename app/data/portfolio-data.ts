@@ -1,4 +1,67 @@
-import { MonitorSmartphone, ShieldAlert, Wrench, Code2, Terminal, Network } from "lucide-react";
+import {
+  MonitorSmartphone,
+  ShieldAlert,
+  Wrench,
+  Terminal,
+  Network,
+  Code2,
+  Sparkles,
+  Layout,
+  Server,
+  Database,
+  Cloud,
+  Blocks,
+} from "lucide-react";
+import {
+  SiClaude,
+  SiClaudecode,
+  SiGooglegemini,
+  SiTypescript,
+  SiCss,
+  SiBootstrap,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiPhp,
+  SiOpenjdk,
+  SiCplusplus,
+  SiXampp,
+  SiSupabase,
+  SiMongodb,
+  SiFirebase,
+  SiCloudflare,
+  SiNextdotjs,
+  SiReact,
+  SiAngular,
+  SiLaravel,
+} from "react-icons/si";
+import { RiOpenaiFill } from "react-icons/ri";
+import type { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons";
+
+export type CardSize = "small" | "medium" | "large";
+
+export type BentoCard = {
+  type: "card";
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  size: CardSize;
+  color: string;
+};
+
+export type TechStackItem = {
+  type: "techstack";
+  title: string;
+  icon: LucideIcon;
+  color: string;
+  size: "full";
+  categories: {
+    name: string;
+    icon: LucideIcon;
+    color: string;
+    tools: { name: string; icon: IconType }[];
+  }[];
+};
 
 export const portfolioData = {
   header: {
@@ -6,20 +69,88 @@ export const portfolioData = {
     role: "Full Stack Developer & Technical Support Engineer",
     bio: "Full-Stack Web Developer, Technical Support Specialist, and Cybersecurity Enthusiast with experience in API investigation, log analysis, penetration testing, system troubleshooting, and web application development. Skilled in React.js, modern web technologies, operating systems, hardware support, and security-focused problem-solving, with a strong commitment to delivering efficient, secure, and reliable solutions.",
     socials: {
-      email: "mailto:lanceachacoso01@gmail.com", // TODO: Update with your real email
-      github: "https://github.com/balotchi", // TODO: Update with your real GitHub
-      linkedin: "https://linkedin.com/in/lance-achacoso-035367415", // TODO: Update with your real LinkedIn
+      email: "mailto:lanceachacoso01@gmail.com",
+      github: "https://github.com/TQ-DevLance",
+      linkedin: "https://linkedin.com/in/lance-achacoso-035367415",
+      facebook: "https://www.facebook.com/lncchcs/",
+      instagram: "https://www.instagram.com/lncchcs/",
     }
   },
   bentoItems: [
     {
-      title: "Full Stack Web Development",
-      description: "Building scalable, responsive applications using React, Next.js, and Node.",
+      type: "techstack",
+      title: "Tech Stack",
       icon: Code2,
-      size: "large",
       color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
+      size: "full",
+      categories: [
+        {
+          name: "AI Tools",
+          icon: Sparkles,
+          color: "bg-violet-500/10 text-violet-500 border-violet-500/20",
+          tools: [
+            { name: "Claude", icon: SiClaude },
+            { name: "Claude Code", icon: SiClaudecode },
+            { name: "Gemini", icon: SiGooglegemini },
+            { name: "ChatGPT", icon: RiOpenaiFill },
+          ],
+        },
+        {
+          name: "Frontend",
+          icon: Layout,
+          color: "bg-sky-500/10 text-sky-500 border-sky-500/20",
+          tools: [
+            { name: "TypeScript", icon: SiTypescript },
+            { name: "CSS", icon: SiCss },
+            { name: "Bootstrap", icon: SiBootstrap },
+            { name: "Tailwind CSS", icon: SiTailwindcss },
+          ],
+        },
+        {
+          name: "Backend",
+          icon: Server,
+          color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
+          tools: [
+            { name: "Node.js", icon: SiNodedotjs },
+            { name: "PHP", icon: SiPhp },
+            { name: "Java", icon: SiOpenjdk },
+            { name: "C++", icon: SiCplusplus },
+          ],
+        },
+        {
+          name: "Database",
+          icon: Database,
+          color: "bg-lime-500/10 text-lime-500 border-lime-500/20",
+          tools: [
+            { name: "XAMPP", icon: SiXampp },
+            { name: "Supabase", icon: SiSupabase },
+            { name: "MongoDB", icon: SiMongodb },
+            { name: "Firebase", icon: SiFirebase },
+          ],
+        },
+        {
+          name: "Storage",
+          icon: Cloud,
+          color: "bg-amber-500/10 text-amber-500 border-amber-500/20",
+          tools: [
+            { name: "Cloudflare", icon: SiCloudflare },
+          ],
+        },
+        {
+          name: "Frameworks",
+          icon: Blocks,
+          color: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
+          tools: [
+            { name: "Next.js", icon: SiNextdotjs },
+            { name: "React.js", icon: SiReact },
+            { name: "Angular", icon: SiAngular },
+            { name: "Laravel", icon: SiLaravel },
+          ],
+        },
+      ],
     },
     {
+      type: "card",
       title: "Cybersecurity / Penetration Testing",
       description: "Two-time participant in DICT technical hacking and cybersecurity competitions.",
       icon: ShieldAlert,
@@ -27,6 +158,7 @@ export const portfolioData = {
       color: "bg-red-500/10 text-red-500 border-red-500/20",
     },
     {
+      type: "card",
       title: "API & Log Investigation",
       description: "Deep-dive troubleshooting of API communications, analyzing system logs, and diagnosing complex technical issues.",
       icon: Network,
@@ -34,6 +166,7 @@ export const portfolioData = {
       color: "bg-purple-500/10 text-purple-500 border-purple-500/20",
     },
     {
+      type: "card",
       title: "OS Administration",
       description: "Proficient in Linux, macOS, and Windows system environments.",
       icon: Terminal,
@@ -41,6 +174,7 @@ export const portfolioData = {
       color: "bg-blue-500/10 text-blue-500 border-blue-500/20",
     },
     {
+      type: "card",
       title: "Hardware Repair",
       description: "Hands-on component-level diagnostics and repair for laptops and PCs.",
       icon: Wrench,
@@ -48,13 +182,14 @@ export const portfolioData = {
       color: "bg-amber-500/10 text-amber-500 border-amber-500/20",
     },
     {
+      type: "card",
       title: "Cross-Platform Optimization",
       description: "Ensuring software runs flawlessly regardless of hardware or OS constraints.",
       icon: MonitorSmartphone,
       size: "medium",
       color: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
     },
-  ],
+  ] as (BentoCard | TechStackItem)[],
   // NEW SECTION: Your timeline data
   experience: [
     {
@@ -65,7 +200,7 @@ export const portfolioData = {
     },
     {
       role: "Freelance Full Stack Developer",
-      company: "Independent",
+      company: "TQ-Devs",
       date: "2024 - Present",
       description: "Designing and building custom web applications for clients, focusing on modern React architectures, responsive design, and seamless user experiences.",
     },
