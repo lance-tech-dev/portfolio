@@ -22,7 +22,6 @@ import {
   SiTailwindcss,
   SiNodedotjs,
   SiPhp,
-  SiOpenjdk,
   SiCplusplus,
   SiXampp,
   SiSupabase,
@@ -35,6 +34,7 @@ import {
   SiLaravel,
 } from "react-icons/si";
 import { RiOpenaiFill } from "react-icons/ri";
+import { FaJava } from "react-icons/fa6";
 import type { LucideIcon } from "lucide-react";
 import type { IconType } from "react-icons";
 
@@ -113,7 +113,7 @@ export const portfolioData = {
           tools: [
             { name: "Node.js", icon: SiNodedotjs },
             { name: "PHP", icon: SiPhp },
-            { name: "Java", icon: SiOpenjdk },
+            { name: "Java", icon: FaJava },
             { name: "C++", icon: SiCplusplus },
           ],
         },
