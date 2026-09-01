@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import type { IconType } from "react-icons";
+import { ToolChipGroup } from "@/components/tool-chip";
 
 type Tool = {
   name: string;
@@ -22,7 +23,7 @@ type TechStackCardProps = {
 
 export function TechStackCard({ title, icon: Icon, color, categories }: TechStackCardProps) {
   return (
-    <div className="group relative col-span-1 md:col-span-3 lg:col-span-4 row-span-2 flex flex-col overflow-hidden rounded-3xl p-6 sm:p-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800/80 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-500 bento-glow shadow-sm hover:shadow-xl hover:shadow-emerald-500/5">
+    <div className="group relative col-span-1 md:col-span-3 lg:col-span-4 flex flex-col overflow-hidden rounded-3xl p-6 sm:p-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800/80 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-500 bento-glow shadow-sm hover:shadow-xl hover:shadow-emerald-500/5">
       <div className="flex items-center gap-4 mb-6 sm:mb-8">
         <div className={`inline-flex p-3 rounded-xl border w-max ${color}`}>
           <Icon size={26} strokeWidth={1.5} />
@@ -32,24 +33,28 @@ export function TechStackCard({ title, icon: Icon, color, categories }: TechStac
         </h3>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+      <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
         {categories.map((category) => (
           <div
             key={category.name}
-            className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-950/40 p-3 sm:p-4 space-y-3"
+            className="flex flex-col sm:flex-row sm:items-center gap-3 py-4 first:pt-0 last:pb-0"
           >
-            <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-semibold ${category.color}`}>
-              <category.icon size={13} strokeWidth={2} />
-              {category.name}
+            <div className="flex items-center gap-2 sm:w-40 shrink-0">
+              <div className={`inline-flex p-1.5 rounded-lg border ${category.color}`}>
+                <category.icon size={13} strokeWidth={2} />
+              </div>
+              <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">
+                {category.name}
+              </span>
             </div>
-            <ul className="space-y-2.5">
-              {category.tools.map((tool) => (
-                <li key={tool.name} className="flex items-start gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  <tool.icon size={15} className="shrink-0 mt-0.5 text-zinc-500 dark:text-zinc-500" />
-                  <span className="leading-snug break-words">{tool.name}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-wrap gap-2">
+              <ToolChipGroup
+                tools={category.tools.map((tool) => ({
+                  name: tool.name,
+                  icon: <tool.icon size={17} />,
+                }))}
+              />
+            </div>
           </div>
         ))}
       </div>

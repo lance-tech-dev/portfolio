@@ -16,25 +16,38 @@ import {
   SiClaude,
   SiClaudecode,
   SiGooglegemini,
+  SiHtml5,
+  SiJavascript,
   SiTypescript,
   SiCss,
   SiBootstrap,
   SiTailwindcss,
   SiNodedotjs,
   SiPhp,
+  SiC,
   SiCplusplus,
   SiXampp,
   SiSupabase,
   SiMongodb,
+  SiMysql,
   SiFirebase,
   SiCloudflare,
+  SiGithub,
+  SiGit,
+  SiBitbucket,
+  SiDocker,
+  SiLinux,
+  SiVercel,
   SiNextdotjs,
   SiReact,
   SiAngular,
   SiLaravel,
+  SiFlask,
+  SiFlutter,
 } from "react-icons/si";
 import { RiOpenaiFill } from "react-icons/ri";
-import { FaJava } from "react-icons/fa6";
+import { FaJava, FaAws } from "react-icons/fa6";
+import { TbBrandCSharp } from "react-icons/tb";
 import type { LucideIcon } from "lucide-react";
 import type { IconType } from "react-icons";
 
@@ -66,8 +79,8 @@ export type TechStackItem = {
 export const portfolioData = {
   header: {
     name: "Lance Achacoso",
-    role: "Full Stack Developer & Technical Support Engineer",
-    bio: "Full-Stack Web Developer, Technical Support Specialist, and Cybersecurity Enthusiast with experience in API investigation, log analysis, penetration testing, system troubleshooting, and web application development. Skilled in React.js, modern web technologies, operating systems, hardware support, and security-focused problem-solving, with a strong commitment to delivering efficient, secure, and reliable solutions.",
+    role: "Technical Support Engineer | Full Stack Freelance Developer",
+    bio: "I'm a Full-Stack Freelance Developer and Technical Support Engineer with experience in software development, IT operations, cybersecurity, system troubleshooting, and real-world business technology. Whether it's a website, a custom system, an automation, an integration, or a complex technical problem that needs untangling, I bring the technical expertise to turn ideas into reliable, working solutions.",
     socials: {
       email: "mailto:lanceachacoso01@gmail.com",
       github: "https://github.com/lance-tech-dev",
@@ -100,8 +113,10 @@ export const portfolioData = {
           icon: Layout,
           color: "bg-sky-500/10 text-sky-500 border-sky-500/20",
           tools: [
-            { name: "TypeScript", icon: SiTypescript },
+            { name: "HTML5", icon: SiHtml5 },
             { name: "CSS", icon: SiCss },
+            { name: "JavaScript", icon: SiJavascript },
+            { name: "TypeScript", icon: SiTypescript },
             { name: "Bootstrap", icon: SiBootstrap },
             { name: "Tailwind CSS", icon: SiTailwindcss },
           ],
@@ -114,7 +129,9 @@ export const portfolioData = {
             { name: "Node.js", icon: SiNodedotjs },
             { name: "PHP", icon: SiPhp },
             { name: "Java", icon: FaJava },
+            { name: "C", icon: SiC },
             { name: "C++", icon: SiCplusplus },
+            { name: "C#", icon: TbBrandCSharp },
           ],
         },
         {
@@ -123,17 +140,25 @@ export const portfolioData = {
           color: "bg-lime-500/10 text-lime-500 border-lime-500/20",
           tools: [
             { name: "XAMPP", icon: SiXampp },
+            { name: "MySQL", icon: SiMysql },
             { name: "Supabase", icon: SiSupabase },
             { name: "MongoDB", icon: SiMongodb },
             { name: "Firebase", icon: SiFirebase },
           ],
         },
         {
-          name: "Storage",
+          name: "Infrastructure",
           icon: Cloud,
           color: "bg-amber-500/10 text-amber-500 border-amber-500/20",
           tools: [
+            { name: "GitHub", icon: SiGithub },
+            { name: "Git", icon: SiGit },
+            { name: "Bitbucket", icon: SiBitbucket },
+            { name: "Docker", icon: SiDocker },
+            { name: "AWS", icon: FaAws },
             { name: "Cloudflare", icon: SiCloudflare },
+            { name: "Linux", icon: SiLinux },
+            { name: "Vercel", icon: SiVercel },
           ],
         },
         {
@@ -145,13 +170,15 @@ export const portfolioData = {
             { name: "React.js", icon: SiReact },
             { name: "Angular", icon: SiAngular },
             { name: "Laravel", icon: SiLaravel },
+            { name: "Flask", icon: SiFlask },
+            { name: "Flutter", icon: SiFlutter },
           ],
         },
       ],
     },
     {
       type: "card",
-      title: "Cybersecurity / Penetration Testing",
+      title: "Cybersecurity | Penetration Testing",
       description: "Two-time participant in DICT technical hacking and cybersecurity competitions.",
       icon: ShieldAlert,
       size: "medium",
@@ -190,7 +217,6 @@ export const portfolioData = {
       color: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
     },
   ] as (BentoCard | TechStackItem)[],
-  // NEW SECTION: Your timeline data
   experience: [
     {
       role: "Technical Support Engineer",

@@ -12,10 +12,10 @@ export function ExperienceTimeline() {
         </p>
       </div>
 
-      {portfolioData.experience && portfolioData.experience.length > 0 && (
+      {portfolioData.experience.length > 0 && (
         <div className="relative border-l border-zinc-200 dark:border-zinc-800 ml-3 md:ml-4 space-y-12 pb-8">
-          {portfolioData.experience.map((exp, index) => (
-            <div key={index} className="relative pl-8 md:pl-12 group">
+          {portfolioData.experience.map((exp) => (
+            <div key={`${exp.company}-${exp.role}`} className="relative pl-8 md:pl-12 group">
               <div className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-zinc-200 dark:bg-zinc-800 ring-4 ring-zinc-50 dark:ring-zinc-950 group-hover:bg-emerald-500 group-hover:ring-emerald-500/20 transition-all duration-300" />
 
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2 gap-2 sm:gap-0">
@@ -31,7 +31,7 @@ export function ExperienceTimeline() {
                 {exp.company}
               </h4>
 
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl text-justify">
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
                 {exp.description}
               </p>
             </div>

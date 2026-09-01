@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { Mail, ArrowRight } from "lucide-react";
-import { SiFacebook, SiInstagram } from "react-icons/si";
+import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa6";
 import { portfolioData } from "@/app/data/portfolio-data";
-import { GithubIcon, LinkedinIcon } from "@/components/social-icons";
 
 export function Hero() {
+  const roleParts = portfolioData.header.role.split(" | ");
+
   return (
     <section className="flex flex-col-reverse lg:flex-row justify-between items-center mb-32 gap-12 lg:gap-8 relative">
 
@@ -22,14 +23,28 @@ export function Hero() {
           Open for Freelance Website Projects
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
             Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-cyan-500">{portfolioData.header.name}</span>
           </h1>
-          <h2 className="text-2xl md:text-3xl text-zinc-600 dark:text-zinc-400 font-semibold tracking-tight">
-            {portfolioData.header.role}
+          <h2 className="text-lg md:text-xl font-semibold tracking-wide text-emerald-600 dark:text-emerald-400">
+            {roleParts.map((part, index) => {
+              if (index === 0) {
+                return <span key={part}>{part}</span>;
+              }
+              const [firstWord, ...rest] = part.split(" ");
+              return (
+                <span key={part}>
+                  {" "}
+                  <span className="whitespace-nowrap">
+                    <span className="text-zinc-400 dark:text-zinc-600">•</span> {firstWord}
+                  </span>
+                  {rest.length > 0 ? ` ${rest.join(" ")}` : ""}
+                </span>
+              );
+            })}
           </h2>
-          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg max-w-2xl mx-auto lg:mx-0 text-justify">
+          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg max-w-2xl mx-auto lg:mx-0">
             {portfolioData.header.bio}
           </p>
         </div>
@@ -52,7 +67,7 @@ export function Hero() {
               aria-label="GitHub profile"
               className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 bg-white dark:bg-zinc-900 hover:border-emerald-500/50 hover:text-emerald-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-              <GithubIcon size={22} />
+              <FaGithub size={22} />
             </a>
             <a
               href={portfolioData.header.socials.linkedin}
@@ -61,7 +76,7 @@ export function Hero() {
               aria-label="LinkedIn profile"
               className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 bg-white dark:bg-zinc-900 hover:border-emerald-500/50 hover:text-emerald-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-              <LinkedinIcon size={22} />
+              <FaLinkedin size={22} />
             </a>
             <a
               href={portfolioData.header.socials.facebook}
@@ -70,7 +85,7 @@ export function Hero() {
               aria-label="Facebook profile"
               className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 bg-white dark:bg-zinc-900 hover:border-emerald-500/50 hover:text-emerald-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-              <SiFacebook size={22} />
+              <FaFacebook size={22} />
             </a>
             <a
               href={portfolioData.header.socials.instagram}
@@ -79,7 +94,7 @@ export function Hero() {
               aria-label="Instagram profile"
               className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 bg-white dark:bg-zinc-900 hover:border-emerald-500/50 hover:text-emerald-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-              <SiInstagram size={22} />
+              <FaInstagram size={22} />
             </a>
           </div>
         </div>

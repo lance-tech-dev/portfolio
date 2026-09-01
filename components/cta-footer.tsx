@@ -31,10 +31,10 @@ export function CtaFooter() {
       <footer className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500 dark:text-zinc-400 text-sm">
         <p>© {new Date().getFullYear()} Lance Achacoso. All rights reserved.</p>
         <div className="flex gap-6">
-          <a href={portfolioData.header.socials.github} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">GitHub</a>
-          <a href={portfolioData.header.socials.linkedin} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">LinkedIn</a>
-          <a href={portfolioData.header.socials.facebook} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Facebook</a>
-          <a href={portfolioData.header.socials.instagram} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Instagram</a>
+          <a href={portfolioData.header.socials.github} target="_blank" rel="noreferrer" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">GitHub</a>
+          <a href={portfolioData.header.socials.linkedin} target="_blank" rel="noreferrer" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">LinkedIn</a>
+          <a href={portfolioData.header.socials.facebook} target="_blank" rel="noreferrer" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Facebook</a>
+          <a href={portfolioData.header.socials.instagram} target="_blank" rel="noreferrer" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Instagram</a>
         </div>
       </footer>
     </section>
