@@ -1,17 +1,15 @@
-import { NavBar } from "@/components/nav-bar";
+import { Sidebar } from "@/components/sidebar";
 import { Hero } from "@/components/hero";
-import { BentoGrid } from "@/components/bento-grid";
-import { ExperienceTimeline } from "@/components/experience-timeline";
-import { CtaFooter } from "@/components/cta-footer";
 
 export default function Home() {
   return (
-    <main className="w-full pb-10">
-      <NavBar />
-      <Hero />
-      <BentoGrid />
-      <ExperienceTimeline />
-      <CtaFooter />
-    </main>
+    <div className="min-h-screen bg-black text-white">
+      <Sidebar />
+      <main className="lg:pl-60">
+        <div className="max-w-4xl mx-auto px-6 py-10 md:py-16">
+          <Hero />
+        </div>
+      </main>
+    </div>
   );
 }
