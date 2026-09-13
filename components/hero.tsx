@@ -10,8 +10,8 @@ export function Hero() {
       <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-neutral-400">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--foreground)] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--foreground)]"></span>
           </span>
           <span>{personalInfo.status}</span>
         </div>
@@ -22,10 +22,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* 2-Column Desktop Grid / Stacked Mobile Layout */}
-      <div className="flex flex-col md:flex-row gap-8 items-start">
-        {/* Profile Image Slot */}
-        <div className="w-full md:w-56 shrink-0">
+      {/* Hero Layout: 2-Column down to 640px (sm), centered stack on small mobile */}
+      <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start justify-start">
+        {/* Profile Image - Centered on mobile (< sm), left-aligned on sm+ */}
+        <div className="w-[160px] sm:w-[180px] lg:w-[220px] shrink-0 mx-auto sm:mx-0">
           <div className="relative aspect-[4/5] w-full rounded-md overflow-hidden bg-neutral-900 border border-neutral-800">
             <img
               src={personalInfo.avatarUrl}
@@ -41,8 +41,8 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Info & Bio Column */}
-        <div className="space-y-6 flex-1">
+        {/* Info & Bio */}
+        <div className="space-y-6 flex-1 min-w-0">
           <div className="space-y-2">
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-mono">
               {personalInfo.name}

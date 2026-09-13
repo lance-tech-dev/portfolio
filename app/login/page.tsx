@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
@@ -9,7 +9,24 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
   const router = useRouter();
+
+  // Redirect to /admin if already authenticated
+  useEffect(() => {
+    const checkExistingSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        router.replace("/admin");
+      } else {
+        setCheckingSession(false);
+      }
+    };
+
+    checkExistingSession();
+  }, [router]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,13 +42,21 @@ export default function LoginPage() {
       setError(error.message);
       setLoading(false);
     } else {
-      router.push("/admin");
+      router.replace("/admin");
     }
   };
 
+  if (checkingSession) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center font-mono text-xs">
+        Checking session...
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-6">
-      <div className="w-full max-w-sm space-y-8 border border-neutral-800 p-8 rounded-lg bg-neutral-950 font-mono">
+    <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 font-mono">
+      <div className="w-full max-w-sm space-y-8 border border-neutral-800 p-8 rounded-lg bg-neutral-950">
         <div className="space-y-2">
           <h1 className="text-xl font-bold tracking-tight">Admin Access</h1>
           <p className="text-xs text-neutral-400">
