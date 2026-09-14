@@ -9,8 +9,6 @@ export async function CertificationsSection() {
   const all = await getCertifications();
   const certifications = all.slice(0, PREVIEW_COUNT);
 
-  if (certifications.length === 0) return null;
-
   return (
     <section id="certifications" className="space-y-6 font-mono">
       <div className="flex items-center justify-between pb-3">
@@ -25,6 +23,11 @@ export async function CertificationsSection() {
         </Link>
       </div>
 
+      {certifications.length === 0 ? (
+        <div className="p-8 border border-neutral-800 rounded-2xl bg-neutral-950/40 text-center text-xs text-neutral-500">
+          No certifications listed yet.
+        </div>
+      ) : (
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {certifications.map((cert) => {
           const content = (
@@ -80,6 +83,7 @@ export async function CertificationsSection() {
           );
         })}
       </div>
+      )}
     </section>
   );
 }
