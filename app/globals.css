@@ -28,6 +28,37 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Heartbeat pulse (theme toggle line + hero status dot share this tempo) */
+:root {
+  --heartbeat-duration: 1.5s;
+}
+
+@keyframes heartbeat-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-heartbeat-scroll {
+  animation: heartbeat-scroll var(--heartbeat-duration) linear infinite;
+}
+
+@keyframes heartbeat-ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-heartbeat-ping {
+  animation: heartbeat-ping var(--heartbeat-duration) cubic-bezier(0, 0, 0.2, 1)
+    infinite;
+}
+
 /* View Transition circular wipe rules */
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -53,42 +84,54 @@ html.light main {
 }
 
 html.light .bg-black,
+html.light .bg-black\/80,
+html.light .bg-black\/85,
 html.light .bg-black\/90,
 html.light .bg-black\/95,
 html.light .bg-black\/98 {
   background-color: #ffffff !important;
 }
 
-html.light .bg-neutral-950 {
+html.light .bg-neutral-950,
+html.light .bg-neutral-950\/40,
+html.light .bg-neutral-950\/50,
+html.light .bg-neutral-950\/60,
+html.light .bg-neutral-950\/80 {
   background-color: #f4f4f5 !important;
 }
 
-html.light .bg-neutral-900 {
+html.light .bg-neutral-900,
+html.light .bg-neutral-900\/20,
+html.light .bg-neutral-900\/40,
+html.light .bg-neutral-900\/50,
+html.light .bg-neutral-900\/60 {
   background-color: #e4e4e7 !important;
 }
 
-html.light .bg-neutral-800 {
+html.light .bg-neutral-800,
+html.light .bg-neutral-600,
+html.light .bg-neutral-500 {
   background-color: #d4d4d8 !important;
   color: #09090b !important;
-}
-
-html.light .bg-neutral-950\/40,
-html.light .bg-neutral-900\/50,
-html.light .bg-neutral-900\/40 {
-  background-color: #f4f4f5 !important;
 }
 
 html.light .text-white {
   color: #09090b !important;
 }
 
+html.light .text-neutral-200,
 html.light .text-neutral-300,
 html.light .text-neutral-400,
-html.light .text-neutral-500 {
+html.light .text-neutral-500,
+html.light .text-neutral-600 {
   color: #52525b !important;
 }
 
+html.light .border-neutral-500,
+html.light .border-neutral-600,
+html.light .border-neutral-700,
 html.light .border-neutral-800,
+html.light .border-neutral-800\/60,
 html.light .border-neutral-800\/80,
 html.light .border-neutral-800\/90,
 html.light .border-neutral-900 {
@@ -104,4 +147,22 @@ html.light a.bg-white {
 html.light button.bg-white:hover,
 html.light a.bg-white:hover {
   background-color: #27272a !important;
+}
+
+/* Selection checkmarks (emerald accent) */
+html.light .text-emerald-400 {
+  color: #059669 !important;
+}
+
+html.light .bg-red-950\/40,
+html.light .bg-red-950\/50 {
+  background-color: #fef2f2 !important;
+}
+
+html.light .border-red-900 {
+  border-color: #fecaca !important;
+}
+
+html.light .text-red-400 {
+  color: #dc2626 !important;
 }

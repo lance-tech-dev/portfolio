@@ -1,5 +1,17 @@
 import { TechCategory } from "@/types/portfolio";
 
+// Canonical display order for tech categories, shared by the admin
+// Stack tab and the public /stack page so they never drift apart.
+export const TECH_CATEGORIES: TechCategory[] = [
+  "Frontend",
+  "Backend",
+  "DevOps & Cloud",
+  "AI & Machine Learning",
+  "Security & Identity",
+  "CMS & No-Code",
+  "Developer Tools",
+];
+
 export const TECH_PRESETS: Record<
   TechCategory,
   { label: string; items: string[] }

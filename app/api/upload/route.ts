@@ -1,9 +1,21 @@
 import { NextResponse } from "next/server";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { r2 } from "@/lib/r2";
+import { supabase } from "@/lib/supabase";
 
 export async function POST(request: Request) {
   try {
+    const authHeader = request.headers.get("authorization") || "";
+    const token = authHeader.replace(/^Bearer\s+/i, "");
+
+    const { data: { user }, error: authError } = token
+      ? await supabase.auth.getUser(token)
+      : { data: { user: null }, error: null };
+
+    if (authError || !user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const formData = await request.formData();
     const file = formData.get("file") as File;
 

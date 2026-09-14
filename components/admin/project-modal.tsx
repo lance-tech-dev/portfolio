@@ -113,8 +113,15 @@ export function ProjectModal({
     formData.append("file", file);
 
     try {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
       const res = await fetch("/api/upload", {
         method: "POST",
+        headers: session
+          ? { Authorization: `Bearer ${session.access_token}` }
+          : undefined,
         body: formData,
       });
 
@@ -247,7 +254,7 @@ export function ProjectModal({
                   onClick={() => setIsPublished(!isPublished)}
                   className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-md border font-semibold text-xs transition-all ${
                     isPublished
-                      ? "bg-emerald-950/40 border-emerald-800/80 text-emerald-400 hover:bg-emerald-900/30"
+                      ? "bg-[var(--foreground)]/10 border-[var(--foreground)]/30 text-[var(--foreground)] hover:bg-[var(--foreground)]/15"
                       : "bg-neutral-900 border-neutral-800 text-neutral-400 hover:bg-neutral-800"
                   }`}
                 >
@@ -261,7 +268,7 @@ export function ProjectModal({
                   </span>
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      isPublished ? "bg-emerald-400 animate-pulse" : "bg-neutral-600"
+                      isPublished ? "bg-[var(--foreground)] animate-pulse" : "bg-neutral-600"
                     }`}
                   />
                 </button>

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useRef } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { flushSync } from "react-dom";
 
 type Theme = "dark" | "light" | "system";
@@ -57,7 +57,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, [theme, mounted]);
 
-  const setTheme = (newTheme: Theme, event?: React.MouseEvent) => {
+  const setTheme = useCallback((newTheme: Theme, event?: React.MouseEvent) => {
     // Prevent redundant triggers if clicking the currently active mode
     if (newTheme === theme) return;
 
@@ -130,10 +130,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } catch {
       setThemeState(newTheme);
     }
-  };
+  }, [theme]);
+
+  const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   );

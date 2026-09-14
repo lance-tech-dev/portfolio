@@ -1,6 +1,6 @@
 -- =================================================================
--- Migration File: 002tech_stack.sql
--- Description: Creates tech_stack table with RLS policies and seed data.
+-- Migration File: 002_create_tech_stacks.sql
+-- Description: Creates tech_stack table with indexes, RLS, and seed data.
 -- =================================================================
 
 -- 1. Create Tech Stack Table
@@ -16,19 +16,27 @@ CREATE TABLE IF NOT EXISTS public.tech_stack (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 2. Indexes for Optimized Queries
+-- 2. Indexes for Query Optimization
 CREATE INDEX IF NOT EXISTS idx_tech_stack_category ON public.tech_stack (category);
 CREATE INDEX IF NOT EXISTS idx_tech_stack_order ON public.tech_stack (order_index ASC);
 
 -- 3. Enable Row Level Security (RLS)
 ALTER TABLE public.tech_stack ENABLE ROW LEVEL SECURITY;
 
--- 4. Public Read-Only RLS Policy
-DROP POLICY IF EXISTS "Allow public read access to tech_stack" ON public.tech_stack;
-CREATE POLICY "Allow public read access to tech_stack"
-    ON public.tech_stack
-    FOR SELECT
+-- 4. RLS Policies (Public Read & Admin Write)
+DROP POLICY IF EXISTS "Allow public select on tech_stack" ON public.tech_stack;
+DROP POLICY IF EXISTS "Allow all operations on tech_stack" ON public.tech_stack;
+
+CREATE POLICY "Allow public select on tech_stack"
+    ON public.tech_stack FOR SELECT
+    TO public
     USING (true);
+
+CREATE POLICY "Allow all operations on tech_stack"
+    ON public.tech_stack FOR ALL
+    TO public
+    USING (true)
+    WITH CHECK (true);
 
 -- 5. Auto-Update Timestamp Trigger
 CREATE OR REPLACE FUNCTION update_tech_stack_updated_at()

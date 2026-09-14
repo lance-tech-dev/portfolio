@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { personalInfo } from "@/app/data";
 import { ArrowUpRight, MapPin } from "lucide-react";
 
@@ -10,7 +11,7 @@ export function Hero() {
       <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-neutral-400">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--foreground)] opacity-75"></span>
+            <span className="animate-heartbeat-ping absolute inline-flex h-full w-full rounded-full bg-[var(--foreground)] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--foreground)]"></span>
           </span>
           <span>{personalInfo.status}</span>
@@ -27,13 +28,13 @@ export function Hero() {
         {/* Profile Image - Centered on mobile (< sm), left-aligned on sm+ */}
         <div className="w-[160px] sm:w-[180px] lg:w-[220px] shrink-0 mx-auto sm:mx-0">
           <div className="relative aspect-[4/5] w-full rounded-md overflow-hidden bg-neutral-900 border border-neutral-800">
-            <img
+            <Image
               src={personalInfo.avatarUrl}
               alt={personalInfo.name}
-              className="w-full h-full object-cover contrast-125"
-              onError={(e) => {
-                (e.target as HTMLElement).style.display = "none";
-              }}
+              fill
+              priority
+              sizes="(min-width: 1024px) 220px, (min-width: 640px) 180px, 160px"
+              className="object-cover contrast-125"
             />
             <div className="absolute inset-0 flex items-center justify-center text-neutral-600 font-mono text-xs -z-10">
               [ Add Photo ]
