@@ -109,7 +109,7 @@ export default async function ExperiencePage() {
                   </div>
                 )}
 
-                <p className="text-sm text-neutral-400 leading-relaxed max-w-2xl">
+                <p className="text-sm text-neutral-400 leading-relaxed max-w-2xl whitespace-pre-line">
                   {exp.description}
                 </p>
               </div>
